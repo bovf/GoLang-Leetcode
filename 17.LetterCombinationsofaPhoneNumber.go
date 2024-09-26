@@ -1,4 +1,4 @@
-package golangleetcode
+package main
 
 func backTrack(digitMap map[string][]string, currentString string, result *[]string, i int, digits string, arraySize int, arrayIndex *int) {
 	if len(currentString) == len(digits) {

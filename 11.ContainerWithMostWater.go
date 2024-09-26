@@ -1,4 +1,4 @@
-package golangleetcode
+package main
 
 // Very slow and bruteforce
 // func maxArea(height []int) int {

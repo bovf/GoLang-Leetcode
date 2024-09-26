@@ -1,4 +1,4 @@
-package golangleetcode
+package main
 
 import (
 	"sort"

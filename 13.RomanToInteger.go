@@ -1,4 +1,4 @@
-package golangleetcode
+package main
 
 func romanToInt(s string) int {
 	result := 0

@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func isValid(s string) bool {
 	var result bool
 
@@ -31,14 +29,6 @@ func isValid(s string) bool {
 
 		stack = stack[:stackLength-1]
 	}
-	result = true
+	result = len(stack) == 0
 	return result
-}
-
-func main() {
-	fmt.Println(isValid("()"))     // Output: true
-	fmt.Println(isValid("()[]{}")) // Output: true
-	fmt.Println(isValid("(]"))     // Output: false
-	fmt.Println(isValid("([)]"))   // Output: false
-	fmt.Println(isValid("{[]}"))   // Output: true
 }

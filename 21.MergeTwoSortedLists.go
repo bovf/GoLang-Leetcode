@@ -1,40 +1,30 @@
 package main
 
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
+import "strings"
 
-func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
-	if list1 == nil && list2 == nil {
-		return nil
-	} else if list1 == nil {
-		return list2
-	} else if list2 == nil {
-		return list1
+func generateParenthesis(n int) []string {
+	combination := []string{}
+	stack := []string{}
+	if n == 0 {
+		return combination
 	}
+	backtrack(0, 0, n, &combination, &stack)
+	return combination
+}
 
-	head := &ListNode{0, nil}
-	newList := head
-
-	for list1 != nil || list2 != nil {
-		if list1.Val < list2.Val {
-			newList.Next = list1
-			list1 = list1.Next
-		} else {
-			newList.Next = list2
-			list2 = list2.Next
-		}
-		newList = newList.Next
+func backtrack(open int, closed int, n int, combination *[]string, stack *[]string) {
+	if open == closed && closed == n && open == n {
+		*combination = append(*combination, strings.Join(*stack, ""))
+		return
 	}
-	if list1 != nil {
-		newList.Next = list1
-	} else {
-		newList.Next = list2
+	if open < n {
+		*stack = append(*stack, "(")
+		backtrack(open+1, closed, n, combination, stack)
+		*stack = (*stack)[:len(*stack)-1]
 	}
-
-	return newList.Next
+	if open > closed {
+		*stack = append(*stack, ")")
+		backtrack(open, closed+1, n, combination, stack)
+		*stack = (*stack)[:len(*stack)-1]
+	}
 }
